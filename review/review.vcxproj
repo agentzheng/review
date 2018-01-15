@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="huffmancode.cpp" />
+    <ClInclude Include="DualArr.h" />
+    <ClInclude Include="图\MyGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="图_邻接表.h" />
+    <ClCompile Include="图测试.cpp" />
+    <ClCompile Include="图_邻接矩阵.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
