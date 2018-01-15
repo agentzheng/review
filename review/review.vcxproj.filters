@@ -15,12 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="二叉排序树.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="二叉排序树测试.cpp">
+    <ClCompile Include="先序后继线索二叉树plus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

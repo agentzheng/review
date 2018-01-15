@@ -19,10 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="二叉排序树.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="二叉排序树测试.cpp" />
+    <ClCompile Include="先序后继线索二叉树plus.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

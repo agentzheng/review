@@ -9,7 +9,7 @@ class BinaryClueTree
 		char data;
 		Node* rchild;
 		Node* lchild;
-		bool rtag;
+		bool tag;
 		bool ltag;
 	};
 	//false 表示装的不是孩子，而是后继
@@ -38,7 +38,7 @@ public:
 			return;
 		}
 		root->data = ch;
-		if (pre != nullptr && !pre->rtag)
+		if (pre != nullptr && !pre->tag)
 		{
 			pre->rchild = root;
 			pre = nullptr;
@@ -53,7 +53,7 @@ public:
 		PreOrderFormTree(root->rchild,index+1);
 		if (root->rchild == nullptr)
 		{
-			root->rtag = false;
+			root->tag = false;
 			if (root->ltag)//如果有左孩子的话，那后继好像也不应该是左孩子哦，
 				root->rchild = root->lchild;
 			else
@@ -75,7 +75,7 @@ public:
 		}
 		cout << root->data<<' ';
 		PreOrder(root->lchild);
-		if(root->rtag)
+		if(root->tag)
 			PreOrder(root->rchild);
 	}
 
