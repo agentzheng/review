@@ -1,4 +1,4 @@
-#include"图_邻接表.h"
+#include"图_邻接矩阵.h"
 #include<iostream>
 #include<vld.h>
 using namespace std;
@@ -10,6 +10,43 @@ int main()
 	cin >> n >> m;
 	Graph<int> graph(n,m);
 	graph.BFS();
+	
 	system("pause");
 	return 0;
 }
+
+/*测试数据
+8 7
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+
+0 1
+
+1 2
+
+2 4
+
+1 3
+
+7 6
+
+3 5
+
+0 7
+
+*/

@@ -6,11 +6,11 @@
 #include<vld.h>//用来检测内存泄露的
 using namespace std;
 
-template<class T>
+template<class Type>
 class Graph
 {
 	int n;	//顶点数
-	T * vertex; //顶点内容
+	Type * vertex; //顶点内容
 	int**  Amatrix;//邻接矩阵
 	int** dis;
 	int** path;
@@ -38,7 +38,7 @@ public:
 	Graph(int N, bool dir) :n(N), direction(dir),searched(false)
 	{
 		Amatrix = dis = path =NULL;// 初始化这些指针
-		vertex = new T[n];
+		vertex = new Type[n];
 		for (int i = 0; i < n; i++)
 		{
 			cout << "请输入第" << i << "个节点的值" << endl;

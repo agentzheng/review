@@ -1,11 +1,11 @@
 #include<iostream>
-#include"DualArr.h"
+#include"../Matrix.h"
 using namespace std;
 #include<queue>
 template<class Type>
 class Graph
 {
-	DualArr<int> linkmat;
+	Matrix<int> linkmat;
 	Type * G;
 	int n;//顶点数
 	int m;//边数
@@ -28,7 +28,7 @@ public:
 			cout << "请输入第" << i << "条边的起点,终点，并用空格隔开,请注意第一个顶点是0" << endl;
 			int src = -1, dest = -1;
 			cin >> src >> dest;
-			linkmat[src][dest] = 1;
+			linkmat(src,dest) = 1;
 		}
 	}
 	~Graph()
@@ -75,7 +75,7 @@ public:
 			q.pop();
 			for (int i = 0; i < n; i++)
 			{
-				if (linkmat[index][i] != 0)
+				if (linkmat(index,i) != 0)
 				{
 					if (visited[i])
 						continue;

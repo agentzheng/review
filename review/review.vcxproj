@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DualArr.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="图\MyGraph.h" />
+    <ClInclude Include="图\图_邻接矩阵.h" />
+    <ClInclude Include="图\图_邻接表.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="图_邻接表.h" />
-    <ClCompile Include="图测试.cpp" />
-    <ClCompile Include="图_邻接矩阵.h" />
+    <ClCompile Include="图\图测试.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

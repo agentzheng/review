@@ -1,18 +1,20 @@
 /*
-Name：Two Dimensional Array
+Name：Matrix
 Auther：Elliott Zheng
 Date: 2017.12.8
-自封装的二维数组，做邻接矩阵的题目应该比较方便
+Modified date：2018.1.16
+一个很基础的矩阵类，不带任何矩阵操作方法，只能访问矩阵元素，隐藏复杂的指针，帮你省去内存管理这一步，做邻接矩阵的题目应该比较方便
 想要使用输出的话需要自己重载T对象的<<操作符
+
 */
 #pragma once
 #include<iostream>
 
-template<class T>
-class DualArr
+template<class Type>
+class Matrix
 {
 private:
-	T * * pointer;
+	Type * * pointer;
 	int rows;
 	int cols;
 
@@ -27,33 +29,33 @@ private:
 	}
 
 public:
-	// 行数，列数(可不填，默认为与行数相同) 把整个数组初始化为一个值
-	DualArr(int row, int col) :pointer(NULL)
+	// 行数，列数, 把整个矩阵初始化为一个值
+	Matrix(int row, int col) :pointer(NULL)
 	{
 		Resize(row, col);
 	}
 	//额外参数ori是将所有元素置为同一值
-	DualArr(int row, int col, T ori) :pointer(NULL)
+	Matrix(int row, int col, Type ori) :pointer(NULL)
 	{
 		Resize(row, col);
 		SetAllTo(ori);
 	}
 
 	//拷贝构造函数
-	DualArr(DualArr& other) :pointer(NULL)
+	Matrix(Matrix& other) :pointer(NULL)
 	{
 		Copy(other);
 	}
 
-	//移动构造函数
-	DualArr(DualArr&& other) :rows(other.rows)
+	//转移构造函数
+	Matrix(Matrix&& other) :rows(other.rows),cols(other.cols)
 	{
 		pointer = other.pointer;
 		other.pointer = NULL;
 	}
 
 	//拷贝other
-	void Copy(DualArr& other)
+	void Copy(Matrix& other)
 	{
 		if (&other == this)
 		{
@@ -90,21 +92,18 @@ public:
 	}
 
 	//行数，列数，初值
-	void Resize(int row, int col, T ori)
+	void Resize(int row, int col, Type ori)
 	{
 		Resize(row, col);
 		SetAllTo(ori);
 	}
 
 	//将所有元素设置为ori
-	void SetAllTo(T ori)
+	void SetAllTo(Type ori)
 	{
 		for (int i = 0; i < rows; i++)
 		{
-			for (int j = 0; j < cols; j++)
-			{
-				pointer[i][j] = ori;
-			}
+			fill(pointer[i], pointer[i] + cols, ori);
 		}
 	}
 
@@ -119,7 +118,7 @@ public:
 	}
 
 	//比较不推荐，但是你懂我意思吧，其实如果你想要程序跑得通，那这两个函数都不应该出问题，但是数组出问题是很正常的啊
-	T* operator[](const int row)
+	Type* operator[](const int row)
 	{
 		if (row >= rows || row < 0)
 		{
@@ -130,8 +129,8 @@ public:
 			return pointer[row];
 	}
 
-	//推荐使用函数操作符访问二维数组元素
-	T& operator()(const int row, const int col)
+	//推荐使用函数操作符访问矩阵元素
+	Type& operator()(const int row, const int col)
 	{
 		if (row >= rows || row < 0 || col >= cols || col<0)
 		{
@@ -143,25 +142,12 @@ public:
 	}
 
 	//析构函数
-	~DualArr()
+	~Matrix()
 	{
 		clean();
 	}
 
-	friend std::ostream& operator<<(std::ostream& out, DualArr<T>& s)
-	{
-		for (int i = 0; i < s.rows; i++)
-		{
-			for (int j = 0; j < s.cols; j++)
-			{
-				out << s[i][j] << '\t';
-			}
-			out << std::endl;
-		}
-		return out;
-	}
-
-	DualArr<T>& operator=(DualArr<T>& other)
+	Matrix<Type>& operator=(Matrix<Type>& other)
 	{
 		Copy(other);
 		return *this;
