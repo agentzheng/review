@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stack>
 using namespace std;
 
 
@@ -40,7 +41,7 @@ public:
 			cerr << "ERROR:内存不足" << endl;
 			return;
 		}
-
+		root->tag = true;
 		root->data = ch;
 		//节点本身构造完毕
 		cout << "构造左子树" << index << endl;
@@ -115,7 +116,26 @@ public:
 			PreOrderForm(root->rchild);
 	}
 
-
+	void UnRecursivePreOrder()
+	{
+		Node * pointer = root;
+		stack<Node*> S;
+		while (!S.empty()||pointer)
+		{
+			while (pointer != nullptr)
+			{
+				cout << pointer->data << " ";
+				S.push(pointer);
+				pointer = pointer->lchild;
+			}
+			if (!S.empty())//pointer变右孩子的时候，我们顺便把它的双亲弹出来了，其实栈顶已经不是这个右孩子的双亲了，而是孩子的爷爷。。。
+			{
+				pointer = S.top();
+				S.pop();
+				pointer = pointer->rchild;
+			}
+		}
+	}
 
 };
 
@@ -123,10 +143,10 @@ public:
 int main()
 {
 	BinaryClueTree tree;
-	tree.PD();
-	tree.PreOrderForm();
+	//tree.PD();
+	//tree.PreOrderForm();
 	
-	tree.PreOrderVisit();
+	tree.UnRecursivePreOrder();
 	system("pause");
 }
 /*

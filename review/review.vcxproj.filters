@@ -15,21 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="图\MyGraph.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="图\图_邻接表.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="图\图_邻接矩阵.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="图\图测试.cpp">
+    <ClCompile Include="树\先序后继线索二叉树plus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

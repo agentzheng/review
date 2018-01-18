@@ -9,11 +9,11 @@ class Graph
 	Type * G;
 	int n;//顶点数
 	int m;//边数
-	bool * visited;
+	bool * marked;
 	queue<int> q;
 
 public:
-	Graph(int _n, int _m) :m(_m), n(_n), visited(new bool[_n] {0}),linkmat(_n,_n,0)
+	Graph(int _n, int _m) :m(_m), n(_n), marked(new bool[_n] {0}),linkmat(_n,_n,0)
 	{
 		G = new Type[n];
 		cout << "初始化顶点参数" << endl;
@@ -34,7 +34,7 @@ public:
 	~Graph()
 	{
 		delete[] G;
-		delete[] visited;
+		delete[] marked;
 	}
 
 	void DFS()
@@ -45,10 +45,10 @@ public:
 
 	void DFS(int k)
 	{
-		if (visited[k])
+		if (marked[k])
 			return;
 		cout << G[k] << endl;
-		visited[k] = true;
+		marked[k] = true;
 		for (int i = 0; i < n; i++)
 		{
 			if (linkmat[k][i] != 0)
@@ -64,10 +64,10 @@ public:
 
 	void BFS(int k)
 	{
-		if (visited[k])
+		if (marked[k])
 			return;
 		cout << G[k] << endl;
-		visited[k] = true;
+		marked[k] = true;
 		q.push(k);
 		while (!q.empty())
 		{
@@ -77,10 +77,10 @@ public:
 			{
 				if (linkmat(index,i) != 0)
 				{
-					if (visited[i])
+					if (marked[i])
 						continue;
 					cout << G[i] << endl;
-					visited[i] = true;
+					marked[i] = true;
 					q.push(i);
 				}
 			}

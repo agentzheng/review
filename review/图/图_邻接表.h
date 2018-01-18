@@ -19,11 +19,13 @@ class Graph
 	Vertex * G;
 	int n;//顶点数
 	int m;//边数
-	bool * visited;
+	bool * marked;
 	queue<Node*> q;
 
+
+
 public:
-	Graph(int _n, int _m) :m(_m), n(_n), visited(new bool[_n] {0})
+	Graph(int _n, int _m) :m(_m), n(_n), marked(new bool[_n] {0})
 	{
 		G = new Vertex[n];
 		cout << "初始化顶点参数" << endl;
@@ -56,7 +58,7 @@ public:
 			}
 		}
 		delete[] G;
-		delete[] visited;
+		delete[] marked;
 	}
 
 
@@ -64,10 +66,10 @@ public:
 
 	void BFS(int k)
 	{
-		if (visited[k])
+		if (marked[k])
 			return;
 		cout << G[k].data << endl;
-		visited[k] = true;
+		marked[k] = true;
 		q.push(G[k].head);
 		while (!q.empty())
 		{
@@ -75,14 +77,14 @@ public:
 			q.pop();
 			while (ptr != nullptr)
 			{
-				if (visited[ptr->Vi])
+				if (marked[ptr->Vi])
 				{
 					ptr = ptr->next;
 					continue;
 				}
 				q.push(G[ptr->Vi].head);
 				cout << G[ptr->Vi].data<<endl;
-				visited[ptr->Vi] = true;
+				marked[ptr->Vi] = true;
 				ptr = ptr->next;
 			}
 		}
@@ -116,10 +118,10 @@ public:
 
 	void DFS(int k)
 	{
-		if (visited[k])
+		if (marked[k])
 			return;
 		cout << G[k].data << endl;
-		visited[k] = true;
+		marked[k] = true;
 		Node * ptr = G[k].head;
 		while (ptr != nullptr)
 		{
@@ -127,6 +129,7 @@ public:
 			ptr = ptr->next;
 		}
 	}
+
 
 	
 
